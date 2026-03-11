@@ -1,0 +1,264 @@
+/**
+ * AI Overview Styles
+ * 
+ * Styles for the AI-powered search overview component
+ * 
+ * @package RossVideo
+ */
+
+/* Container - matches .block-list width which has padding-right: 6rem on desktop */
+.block_DATA005 .ai-overview-container {
+    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    padding: 20px 24px;
+    margin-bottom: 24px;
+    position: relative;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    transition: all 0.3s ease;
+}
+
+/* Match the width of .block-list on desktop (which has padding-right: 6rem) */
+@media (min-width: 768px) {
+    .block_DATA005 .ai-overview-container {
+        margin-right: 6rem;
+    }
+}
+
+.block_DATA005 .ai-overview-container:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* Header */
+.ai-overview-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.ai-overview-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0;
+    font-family: "Mulish", "mulish-variable", sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 19px;
+    line-height: 140%;
+    color: #1a1a2e;
+}
+
+@media (max-width: 991px) {
+    .ai-overview-title {
+        font-size: 16px;
+    }
+}
+
+.ai-overview-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    background: linear-gradient(135deg, rgb(108, 124, 138) 0%, rgb(88, 104, 118) 100%);
+    border-radius: 8px;
+    color: #fff;
+}
+
+.ai-overview-icon svg {
+    width: 16px;
+    height: 16px;
+}
+
+.ai-overview-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-family: "Mulish", "mulish-variable", sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    color: #6c757d;
+    background: #f1f3f4;
+    padding: 4px 10px;
+    border-radius: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.ai-overview-badge svg {
+    width: 12px;
+    height: 12px;
+}
+
+.ai-overview-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px 8px;
+    color: #6c757d;
+    font-size: 18px;
+    line-height: 1;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+
+.ai-overview-toggle:hover {
+    background-color: #e9ecef;
+}
+
+/* Content */
+.ai-overview-content {
+    font-family: "Mulish", "mulish-variable", sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 140%;
+    color: #2d3841;
+}
+
+.ai-overview-content p {
+    margin: 0 0 12px;
+}
+
+.ai-overview-content p:last-child {
+    margin-bottom: 0;
+}
+
+.ai-overview-content ul,
+.ai-overview-content ol {
+    margin: 12px 0;
+    padding-left: 24px;
+}
+
+.ai-overview-content li {
+    margin-bottom: 6px;
+}
+
+.ai-overview-content strong {
+    color: #1a1a2e;
+}
+
+.ai-overview-content a {
+    color: rgb(108, 124, 138);
+    text-decoration: underline;
+    transition: color 0.2s ease;
+}
+
+.ai-overview-content a:hover {
+    color: #1a1a2e;
+}
+
+/* Loading State */
+.block_DATA005 .ai-overview-container.is-loading .ai-overview-content {
+    display: none;
+}
+
+.ai-overview-loader {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 20px;
+    font-family: "Mulish", "mulish-variable", sans-serif;
+    color: #6c757d;
+    font-size: 14px;
+}
+
+.block_DATA005 .ai-overview-container.is-loading .ai-overview-loader {
+    display: flex;
+}
+
+.ai-overview-spinner {
+    width: 24px;
+    height: 24px;
+    border: 3px solid #e9ecef;
+    border-top-color: rgb(108, 124, 138);
+    border-radius: 50%;
+    animation: ai-spinner 0.8s linear infinite;
+}
+
+@keyframes ai-spinner {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Error State */
+.block_DATA005 .ai-overview-container.has-error {
+    border-color: #f8d7da;
+    background: #fff5f5;
+}
+
+.ai-overview-error-message {
+    color: #842029;
+    margin-bottom: 12px;
+}
+
+.ai-overview-retry {
+    font-size: 13px;
+}
+
+/* Collapsed State */
+.block_DATA005 .ai-overview-container.collapsed .ai-overview-content,
+.block_DATA005 .ai-overview-container.collapsed .ai-overview-loader {
+    display: none;
+}
+
+.block_DATA005 .ai-overview-container.collapsed {
+    padding-bottom: 16px;
+}
+
+.block_DATA005 .ai-overview-container.collapsed .ai-overview-header {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+/* Hidden State (when not enabled) */
+.block_DATA005 .ai-overview-container.is-hidden {
+    display: none;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .block_DATA005 .ai-overview-container {
+        padding: 16px;
+        margin-bottom: 16px;
+    }
+    
+    .ai-overview-header {
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+    
+    .ai-overview-badge {
+        order: 3;
+        width: 100%;
+        justify-content: center;
+        margin-top: 4px;
+    }
+    
+    .ai-overview-content {
+        font-size: 14px;
+    }
+}
+
+/* Animation for content appearance */
+.block_DATA005 .ai-overview-container.has-content .ai-overview-content {
+    animation: fadeInUp 0.4s ease;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

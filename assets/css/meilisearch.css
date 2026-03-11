@@ -1,0 +1,432 @@
+/**
+ * Meilisearch Styles
+ * 
+ * Styles for instant search dropdown and search results page
+ * 
+ * @package RossVideo
+ */
+
+/* ==========================================================================
+   Instant Search Dropdown
+   ========================================================================== */
+
+.meili-instant-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.2s ease;
+    max-height: 480px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.meili-instant-dropdown.is-open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* Header search specific positioning */
+header .meili-instant-dropdown {
+    position: fixed;
+    top: auto;
+    left: 50%;
+    right: auto;
+    width: 100%;
+    max-width: 600px;
+    transform: translate(-50%, -10px);
+    margin-top: 10px;
+}
+
+header .meili-instant-dropdown.is-open {
+    transform: translate(-50%, 0);
+}
+
+.meili-instant-results {
+    flex: 1;
+    overflow-y: auto;
+    padding: 8px 0;
+}
+
+.meili-instant-result {
+    display: flex;
+    align-items: center;
+    padding: 12px 16px;
+    cursor: pointer;
+    transition: background-color 0.15s ease;
+    gap: 12px;
+}
+
+.meili-instant-result:hover,
+.meili-instant-result.selected {
+    background-color: #f5f5f5;
+}
+
+.meili-result-thumb {
+    width: 48px;
+    height: 48px;
+    flex-shrink: 0;
+    border-radius: 4px;
+    overflow: hidden;
+    background: #f0f0f0;
+}
+
+.meili-result-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.meili-result-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.meili-result-type {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #888;
+    margin-bottom: 2px;
+}
+
+.meili-result-title {
+    font-size: 14px;
+    font-weight: 500;
+    color: #333;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.meili-result-title mark {
+    background: transparent;
+    color: inherit;
+    padding: 0;
+}
+
+.meili-result-excerpt {
+    font-size: 12px;
+    color: #666;
+    line-height: 1.4;
+    margin-top: 2px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    white-space: normal;
+}
+
+.meili-result-excerpt mark {
+    background: transparent;
+    color: inherit;
+    padding: 0;
+}
+
+.meili-instant-footer {
+    border-top: 1px solid #e0e0e0;
+    padding: 12px 16px;
+    background: #fafafa;
+}
+
+.meili-view-all {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    color: #0B70F4;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: color 0.15s ease;
+}
+
+.meili-view-all:hover {
+    color: #33619c;
+    text-decoration: none;
+}
+
+.meili-view-all svg {
+    transition: transform 0.15s ease;
+}
+
+.meili-view-all:hover svg {
+    transform: translateX(4px);
+}
+
+/* Loading state */
+.meili-loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 24px;
+    color: #666;
+    font-size: 14px;
+}
+
+.meili-spinner {
+    width: 18px;
+    height: 18px;
+    border: 2px solid #e0e0e0;
+    border-top-color: #0B70F4;
+    border-radius: 50%;
+    animation: meili-spin 0.8s linear infinite;
+}
+
+.meili-spinner-large {
+    width: 40px;
+    height: 40px;
+    border: 3px solid #e0e0e0;
+    border-top-color: #0B70F4;
+    border-radius: 50%;
+    animation: meili-spin 0.8s linear infinite;
+    margin: 0 auto;
+}
+
+@keyframes meili-spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* No results */
+.meili-no-results {
+    padding: 32px 16px;
+    text-align: center;
+    color: #666;
+    font-size: 14px;
+}
+
+
+/* ==========================================================================
+   Search Results Page
+   ========================================================================== */
+
+.meili-search-results {
+    min-height: 200px;
+}
+
+.meili-results-group {
+    border: 1px solid #e0e0e0 !important;
+    border-radius: 8px;
+    margin-bottom: 24px;
+    padding: 16px !important;
+}
+
+.meili-search-result {
+    padding: 12px 0;
+}
+
+.meili-search-result .hyperlink {
+    display: block;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.meili-search-result .hyperlink:hover {
+    transform: translateX(4px);
+}
+
+.meili-search-result .hyperlink:hover h4 {
+    text-decoration: underline;
+}
+
+.meili-search-result h4 mark,
+.meili-search-result p mark {
+    background: transparent;
+    color: inherit;
+    padding: 0;
+}
+
+/* Loading state for search page */
+.meili-loading-state {
+    padding: 60px 20px;
+}
+
+/* Load more button */
+.meili-load-more-wrapper {
+    padding: 24px;
+}
+
+.meili-load-more {
+    background: #0B70F4;
+    color: #fff;
+    border: none;
+    padding: 12px 32px;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.meili-load-more:hover:not(:disabled) {
+    background: #33619c;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 14, 0, 0.3);
+}
+
+.meili-load-more:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.meili-load-more .meili-spinner {
+    display: inline-block;
+    margin-right: 8px;
+    border-color: rgba(255, 255, 255, 0.3);
+    border-top-color: #fff;
+}
+
+/* Error state */
+.meili-error {
+    padding: 40px 20px;
+}
+
+
+/* ==========================================================================
+   Search Overlay & Modal
+   ========================================================================== */
+
+/* Dark overlay when search is open */
+body.search-open {
+    overflow: hidden;
+}
+
+body.search-open::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 99;
+    animation: fadeIn 0.2s ease;
+}
+
+body.search-open header.rossvideo-navbar {
+    z-index: 100;
+}
+
+body.search-open .meili-instant-dropdown {
+    background: #fff;
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    z-index: 101;
+}
+
+body.search-open .meili-instant-result:hover,
+body.search-open .meili-instant-result.selected {
+    background-color: rgba(11, 112, 244, 0.08);
+}
+
+body.search-open .meili-result-title {
+    color: #333;
+}
+
+body.search-open .meili-result-type {
+    color: #0B70F4;
+    font-weight: 700;
+}
+
+body.search-open .meili-instant-footer {
+    background: #f8f9fa;
+    border-color: #e0e0e0;
+    border-radius: 0 0 12px 12px;
+}
+
+body.search-open .meili-no-results,
+body.search-open .meili-loading {
+    color: #666;
+}
+
+body.search-open .meili-result-excerpt {
+    color: #666;
+}
+
+body.search-open .meili-view-all {
+    color: #0B70F4;
+    font-weight: 600;
+}
+
+body.search-open .meili-view-all:hover {
+    color: #33619c;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+
+@media (max-width: 991px) {
+    header .meili-instant-dropdown {
+        position: absolute;
+        left: 0;
+        right: 0;
+        max-width: none;
+        transform: translateY(-10px);
+        margin: 0 16px;
+        width: auto;
+    }
+    
+    header .meili-instant-dropdown.is-open {
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 576px) {
+    .meili-instant-dropdown {
+        max-height: 70vh;
+    }
+    
+    .meili-instant-result {
+        padding: 10px 12px;
+    }
+    
+    .meili-result-thumb {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .meili-result-title {
+        font-size: 13px;
+    }
+}
+
+
+/* ==========================================================================
+   Utilities
+   ========================================================================== */
+
+.meili-hidden {
+    display: none !important;
+}
+
+.meili-highlight {
+    background: transparent;
+    padding: 0;
+}
