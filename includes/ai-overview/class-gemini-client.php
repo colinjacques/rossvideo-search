@@ -127,9 +127,13 @@ class RossVideo_Gemini_Client {
             ),
             'body' => json_encode($body),
             'timeout' => 30,
+            'sslverify' => false,
         ));
         
         if (is_wp_error($response)) {
+            if (defined('WP_DEBUG') && WP_DEBUG) {
+                error_log('[Gemini] wp_remote_post WP_Error: ' . $response->get_error_message());
+            }
             return $response;
         }
         
@@ -137,6 +141,10 @@ class RossVideo_Gemini_Client {
         $response_body = wp_remote_retrieve_body($response);
         $data = json_decode($response_body, true);
         
+        if ($response_code !== 200 && defined('WP_DEBUG') && WP_DEBUG) {
+            error_log('[Gemini] HTTP ' . $response_code . ' body: ' . substr($response_body, 0, 500));
+        }
+
         if ($response_code !== 200) {
             $error_message = isset($data['error']['message']) ? $data['error']['message'] : 'Unknown error';
             return new WP_Error('api_error', 'Gemini API error: ' . $error_message, array('status' => $response_code));

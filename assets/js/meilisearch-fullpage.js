@@ -633,8 +633,13 @@
                         this.showAIError(response.data?.message);
                     }
                 },
-                error: () => {
-                    this.showAIError();
+                error: (xhr) => {
+                    let message;
+                    try {
+                        const data = JSON.parse(xhr.responseText);
+                        message = data?.data?.message;
+                    } catch (e) {}
+                    this.showAIError(message);
                 }
             });
         },

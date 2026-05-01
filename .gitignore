@@ -11,3 +11,8 @@ Thumbs.db
 *.log
 *.tmp
 *.temp
+
+# Never commit local config with secrets
+local-config.php
+.env
+.env.*

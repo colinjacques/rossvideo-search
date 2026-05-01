@@ -18,7 +18,7 @@ if (!defined('MEILI_HOST')) {
 }
 
 if (!defined('MEILI_API_KEY')) {
-    define('MEILI_API_KEY', '27024c8e7b24757d95f85b9803044818911d64928f68fcaf2d01bb95e48d5317');
+    define('MEILI_API_KEY', ''); // Set MEILI_API_KEY in wp-config.php
 }
 
 // Default search settings
